@@ -275,23 +275,23 @@ const HomePage: React.FC = () => {
               {
                 image: "https://cdn-images-1.medium.com/v2/resize:fit:1000/1*yWBx1US6Iv_iNyJ0GwkUzQ.jpeg",
                 title: "Android's Silent Threat: NotificationListenerService Fuels Malware Persistence",
-                excerpt: "While this API is good for legitimate use cases, its ability to bind automatically after a reboot (post-unlock) caught my attention. Could this be exploited for persistence and data theft? I set out to investigate.",
-                date: "may 15, 2025",
-                slug: "malware"
+                excerpt: "While this API is good for legitimate use cases, its ability to bind automatically after a reboot caught my attention. Could this be exploited for persistence and data theft? I set out to investigate.",
+                date: "May 15, 2025",
+                link: "https://medium.com/@S3THU/"
               },
               {
                 image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*sV3S0kMNH1H7voY-TEfMqg.png",
                 title: "Exploiting Firestore Database Rules: A Pathway to Data Breaches",
                 excerpt: "In the world of cloud-based applications, Firebase Firestore provides a flexible and scalable NoSQL database solution. However, like any powerful tool, it comes with its own set of risks if not properly configured",
                 date: "September 8, 2024",
-                slug: "misconfiguration"
+                link: "https://medium.com/@S3THU/exploiting-firestore-database-rules-a-pathway-to-data-breaches-aa945476cc16"
               },
               {
                 image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*m27ticiB9XAgoCPpajRTRw.png",
-                title: "The Funniest Hacking that I’ve done: Turning Pranks into Profits !",
+                title: "The Funniest Hacking that I’ve done: Turning Pranks into Profits!",
                 excerpt: "Picture this: a novice hacker stumbling upon an Instagram hacking tool on GitHub, eager to test their newfound skills. Excitedly, they download the tool and set out on their hacking journey",
                 date: "February 4, 2024",
-                slug: "supply-chain-attacks"
+                link: "https://medium.com/@S3THU/the-funniest-hacking-that-ive-done-turning-pranks-into-profits-800705fe7a83"
               }
             ].map((post, index) => (
               <motion.div
@@ -302,30 +302,40 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
+                <img
+                  src={post.image}
+                  alt={post.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6 flex flex-col flex-grow">
                   <p className="text-sm text-primary-400 mb-2">{post.date}</p>
                   <h3 className="text-xl font-bold mb-3 text-white">{post.title}</h3>
                   <p className="text-dark-300 mb-4 flex-grow">{post.excerpt}</p>
-                  <Link to={`/blog/${post.slug}`} className="text-primary-400 font-medium hover:text-primary-500 inline-flex items-center mt-auto">
+                  <a
+                    href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-400 font-medium hover:text-primary-500 inline-flex items-center mt-auto"
+                  >
                     Read more
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Link to="/blog" className="btn-primary">
+            <a
+              href="https://medium.com/@S3THU"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               View All Posts
-            </Link>
+            </a>
           </div>
         </div>
       </section>
