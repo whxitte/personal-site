@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Code, Server, AlertCircle, Users, FileCheck, Zap, Database, Globe, Cloud, RefreshCcw, Ban as Bank, HeartPulse, Building, ShoppingCart, Rocket, Wifi, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { Helmet } from 'react-helmet';
+import { Shield, Code, Server, AlertCircle, Users, FileCheck, Zap, Database, Globe, Cloud, RefreshCcw, Ban as Bank, HeartPulse, Rocket, CheckCircle2 } from 'lucide-react';
 
 const ServicesPage: React.FC = () => {
   const services = [
@@ -191,6 +192,35 @@ const ServicesPage: React.FC = () => {
 
   return (
     <div>
+      {/* SEO Meta Tags and Schema */}
+      <Helmet>
+        <title>Sethu Satheesh | Cybersecurity Services</title>
+        <meta
+          name="description"
+          content="Explore cybersecurity services by Sethu Satheesh, including penetration testing, cloud security, digital forensics, and more in Kerala, India."
+        />
+        <meta
+          name="keywords"
+          content="Sethu Satheesh, cybersecurity services, penetration testing, cloud security, digital forensics, security training, Kerala, India"
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Sethu Satheesh Cybersecurity Services",
+              "description": "Cybersecurity services offered by Sethu Satheesh, including penetration testing and cloud security.",
+              "url": "https://sethusatheesh.vercel.app/services",
+              "author": {
+                "@type": "Person",
+                "name": "Sethu Satheesh",
+                "url": "https://sethusatheesh.vercel.app/"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+      
       {/* Header */}
       <section className="min-h-screen flex items-center pt-16 bg-dark-900">
         <div className="container">

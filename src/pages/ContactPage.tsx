@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import { initEmailJS, sendEmail } from '../utils/emailService'; // Import EmailJS utilities
+import { Mail, MapPin, Send, CheckCircle } from 'lucide-react';
+import { initEmailJS, sendEmail } from '../utils/emailService';
+import { Helmet } from 'react-helmet';
 
 const ContactPage: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -58,6 +59,35 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="bg-dark-900">
+      {/* SEO Meta Tags and Schema */}
+      <Helmet>
+        <title>Contact Sethu Satheesh | Cybersecurity Expert</title>
+        <meta
+          name="description"
+          content="Contact Sethu Satheesh, a Kerala-based cybersecurity expert, for penetration testing, cloud security, and DevSecOps services."
+        />
+        <meta
+          name="keywords"
+          content="Sethu Satheesh, contact, cybersecurity, penetration testing, cloud security, DevSecOps, Kerala, India"
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Contact Sethu Satheesh",
+              "description": "Contact page for Sethu Satheesh, a cybersecurity expert in Kerala, India.",
+              "url": "https://sethusatheesh.vercel.app/contact",
+              "author": {
+                "@type": "Person",
+                "name": "Sethu Satheesh",
+                "url": "https://sethusatheesh.vercel.app/"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+
       {/* Header */}
       <section className="min-h-screen flex items-center bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900 text-white">
         <div className="container">

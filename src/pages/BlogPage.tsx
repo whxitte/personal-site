@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import {Helmet} from "react-helmet";
 
 const BlogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -88,6 +89,52 @@ const BlogPage: React.FC = () => {
 
   return (
     <div className="bg-dark-900">
+      {/* SEO Meta Tags and Schema */}
+      <Helmet>
+        <title>Sethu Satheesh | Cybersecurity Blog</title>
+        <meta
+          name="description"
+          content="Read Sethu Satheesh's blog for insights on cybersecurity, including cloud security, penetration testing, social engineering, IoT hacking, and more."
+        />
+        <meta
+          name="keywords"
+          content="Sethu Satheesh, cybersecurity, cloud security, penetration testing, social engineering, IoT hacking, physical security, wireless hacking, Kerala"
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Sethu Satheesh Cybersecurity Blog",
+              "description": "Blog by Sethu Satheesh covering cybersecurity topics like cloud security, penetration testing, and IoT hacking.",
+              "url": "https://sethusatheesh.vercel.app/blog",
+              "author": {
+                "@type": "Person",
+                "name": "Sethu Satheesh",
+                "url": "https://sethusatheesh.vercel.app/"
+              },
+              "hasPart": [
+                ${allPosts.map(post => `
+                  {
+                    "@type": "BlogPosting",
+                    "headline": "${post.title}",
+                    "description": "${post.excerpt}",
+                    "datePublished": "${post.date}",
+                    "url": "${post.mediumUrl}",
+                    "image": "${post.image}",
+                    "author": {
+                      "@type": "Person",
+                      "name": "Sethu Satheesh"
+                    },
+                    "keywords": "${post.category}, cybersecurity, Sethu Satheesh"
+                  }
+                `).join(',')}
+              ]
+            }
+          `}
+        </script>
+      </Helmet>
+
       {/* Header */}
       <section className="min-h-[50vh] flex items-center bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900 text-white">
         <div className="container">

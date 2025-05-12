@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Shield, Lock, Code, Server, AlertCircle, Users, Linkedin, Github, Mail, Instagram } from 'lucide-react';
 import { FaMedium } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import {Helmet} from "react-helmet";
+
 
 const HomePage: React.FC = () => {
   useEffect(() => {
@@ -40,6 +42,36 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
+      {/* SEO Meta Tags and Schema */}
+      <Helmet>
+        <title>Sethu Satheesh | Cybersecurity Expert</title>
+        <meta
+          name="description"
+          content="Sethu Satheesh, a cybersecurity expert in Kerala, India, specializing in penetration testing, cloud security, DevSecOps, and vulnerability assessment."
+        />
+        <meta
+          name="keywords"
+          content="Sethu Satheesh, cybersecurity, penetration testing, cloud security, DevSecOps, vulnerability assessment, Kerala, India"
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Sethu Satheesh Cybersecurity Homepage",
+              "description": "Homepage of Sethu Satheesh, a cybersecurity expert offering penetration testing, cloud security, and DevSecOps services in Kerala, India.",
+              "url": "https://sethusatheesh.vercel.app/",
+              "keywords": "Sethu Satheesh, cybersecurity, penetration testing, cloud security, DevSecOps, Kerala",
+              "author": {
+                "@type": "Person",
+                "name": "Sethu Satheesh",
+                "url": "https://sethusatheesh.vercel.app/"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="min-h-screen flex items-center bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900 text-white">
         <div className="container">
