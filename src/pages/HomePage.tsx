@@ -309,7 +309,7 @@ const HomePage: React.FC = () => {
                 title: "Android's Silent Threat: NotificationListenerService Fuels Malware Persistence",
                 excerpt: "While this API is good for legitimate use cases, its ability to bind automatically after a reboot caught my attention. Could this be exploited for persistence and data theft? I set out to investigate.",
                 date: "May 15, 2025",
-                link: "https://medium.com/@S3THU/"
+                link: "https://medium.com/@S3THU/androids-silent-threat-notificationlistenerservice-fuels-malware-persistence-b50e0f217b34"
               },
               {
                 image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*sV3S0kMNH1H7voY-TEfMqg.png",

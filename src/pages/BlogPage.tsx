@@ -19,6 +19,16 @@ const BlogPage: React.FC = () => {
   const allPosts = [
     {
       id: 1,
+      title: 'Android’s Silent Threat: NotificationListenerService Fuels Malware Persistence',
+      excerpt: 'What started as a routine investigation turned into a chilling revelation: Android’s NotificationListenerService, a legitimate API meant to manage notifications, can be weaponized to enable malware persistence',
+      image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*DLuvy7BbQxReUA-RWiuB8A.jpeg',
+      date: 'may 13, 2024',
+      category: 'malwares',
+      mediumUrl: 'https://medium.com/@S3THU/androids-silent-threat-notificationlistenerservice-fuels-malware-persistence-b50e0f217b34',
+      readTime: '14 min read'
+    },
+    {
+      id: 2,
       title: 'Exploiting Firestore Database Rules: A Pathway to Data Breaches',
       excerpt: 'In the world of cloud-based applications, Firebase Firestore provides a flexible and scalable NoSQL database solution. However, like any powerful tool, it comes with its own set of risks if not properly configured.',
       image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*sV3S0kMNH1H7voY-TEfMqg.png',
@@ -28,7 +38,7 @@ const BlogPage: React.FC = () => {
       readTime: '9 min read'
     },
     {
-      id: 2,
+      id: 3,
       title: 'The Funniest Hacking that I’ve done: Turning Pranks into Profits !',
       excerpt: "I am going to take you on a ride through one of the simple but a crazy hack I’ve done. Join me as I walk you through the story of this hack and reveal how I turned a simple prank into a cybersecurity lesson you won’t soon forget.",
       image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*m27ticiB9XAgoCPpajRTRw.png',
@@ -38,7 +48,7 @@ const BlogPage: React.FC = () => {
       readTime: '12 min read'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Hacking Printers : Unveiling the Risks of Printer & IoT Hacking',
       excerpt: "Printers are frequently considered as low-risk devices in today’s digital world, yet this perception belies their true risk potential.",
       image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*4h-epi73EwQHbDfgHHRYzg.jpeg',
@@ -48,7 +58,7 @@ const BlogPage: React.FC = () => {
       readTime: '12 min read'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Lock Picking: From a Pentester’s point of view',
       excerpt: 'Lock picking, a skill often associated with clandestine activities, has found a legitimate place in the toolkit of cybersecurity professionals.',
       image: 'https://miro.medium.com/v2/resize:fit:640/format:webp/1*4D20ZfMQ2kyOQ8dOqXlRUw.png',
@@ -58,7 +68,7 @@ const BlogPage: React.FC = () => {
       readTime: '6 min read'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Funny Hacking i’ve done #2: I Owned Every Possible Account of Over 500+ Victims',
       excerpt: 'This write-up delves into a social engineering experiment i’ve done that highlights the risks associated with blindly trusting and running code obtained from unverified sources and how dangerous it can go.',
       image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*hzOBLGrVjFhWAO0kVlFdIQ.jpeg',
@@ -68,7 +78,7 @@ const BlogPage: React.FC = () => {
       readTime: '8 min read'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Funny Hacking i’ve done #2: I Owned Every Possible Account of Over 500+ Victims',
       excerpt: 'Bluetooth operates on a frequency hopping spread spectrum (FHSS) technique, as compare it with Wi-Fi’s channel-based approach.',
       image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*puYcZ8BaJogfeRafvfXkLw.jpeg',
@@ -76,7 +86,7 @@ const BlogPage: React.FC = () => {
       category: 'Wireless Hacking',
       mediumUrl: 'https://medium.com/@S3THU/bluetooth-hacking-a-guide-for-cyber-security-enthusiasts-1-2f50a2b03136',
       readTime: '10 min read'
-    }
+    },
   ];
 
   // Filter posts based on search term and category
