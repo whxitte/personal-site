@@ -13,7 +13,8 @@ const BlogPage: React.FC = () => {
     'Social Engineering',
     'IOT Hacking',
     'Physical Security',
-    'Wireless Hacking'
+    'Wireless Hacking',
+    'Malwares'
   ];
 
   const allPosts = [
