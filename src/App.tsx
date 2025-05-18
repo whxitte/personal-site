@@ -12,6 +12,7 @@ import ServicesPage from './pages/ServicesPage';
 import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
+import UndergroundPage from './pages/UndergroundPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
+        <Route path="/underground" element={<UndergroundPage />} />
         </Route>
       </Routes>
     </AnimatePresence>
