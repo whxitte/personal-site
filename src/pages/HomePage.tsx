@@ -91,10 +91,10 @@ const HomePage: React.FC = () => {
               <h1 className="mb-6">
                 Hi, I'm <span style={{ color: '#26A69A' }}>Sethu Satheesh</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8">
+              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed px-4 sm:px-0">
                 Cyber security researcher from Kerala, India, specializing in vulnerability assessment, Penetration testing of web apps, cloud security and SOC.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+              <div className="flex flex-row justify-center gap-2 sm:gap-4 mb-8 w-full max-w-xs sm:max-w-none mx-auto">
                 <Link to="/contact" className="btn-primary text-base">
                   Get in Touch
                 </Link>

@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  corePlugins: {
+    scrollbar: false,
+  },
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

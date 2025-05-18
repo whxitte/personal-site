@@ -1,11 +1,93 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
-import { Shield, Code, Server, AlertCircle, Users, FileCheck, Zap, Database, Globe, Cloud, RefreshCcw, Ban as Bank, HeartPulse, Rocket, CheckCircle2 } from 'lucide-react';
+import { Shield, Code, Server, AlertCircle, Users, FileCheck, Zap, Database, Globe, Cloud, RefreshCcw, Ban as Bank, HeartPulse, Rocket, CheckCircle2, GraduationCap } from 'lucide-react';
 
 const ServicesPage: React.FC = () => {
+  const navContainerRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const isAutoScrollingRef = useRef(true);
+
+  // Reset scroll position to start
+  useEffect(() => {
+    const resetScroll = () => {
+      const container = navContainerRef.current;
+      if (container) {
+        // Scroll to show 'Personal Mentoring' button first
+        const firstButton = container.querySelector('[data-id="personal-mentoring"]');
+        if (firstButton) {
+          firstButton.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+        } else {
+          container.scrollLeft = 0;
+        }
+      }
+    };
+    // Run after a short delay to ensure DOM is fully rendered
+    const timeoutId = setTimeout(resetScroll, 100);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const container = navContainerRef.current;
+    if (!container) return;
+
+    const scrollSpeed = 1; // Pixels per frame (adjust for slower/faster scroll)
+    const maxScroll = container.scrollWidth - container.clientWidth;
+
+    const scroll = () => {
+      if (!isAutoScrollingRef.current) return;
+
+      container.scrollLeft += scrollSpeed;
+
+      // Smoothly loop back to start when reaching the end
+      if (container.scrollLeft >= maxScroll) {
+        container.scrollLeft = 0;
+        isAutoScrollingRef.current = true;
+      }
+
+      animationFrameRef.current = requestAnimationFrame(scroll);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(scroll);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  // Stop auto-scroll on click
+  const handleClick = () => {
+    isAutoScrollingRef.current = false;
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+  };
+
   const services = [
+    {
+      id: 'personal-mentoring',
+      icon: <GraduationCap className="h-10 w-10 text-primary-400" />,
+      title: 'Personal Mentoring',
+      description: 'One-on-one cybersecurity mentoring program designed to guide students through the complexities of cybersecurity, building practical skills and knowledge.',
+      benefits: [
+        'Personalized learning path tailored to your goals',
+        'Hands-on experience with real-world scenarios',
+        'Direct guidance from an experienced professional',
+        'Career path development and industry insights'
+      ],
+      process: [
+        'Initial assessment and goal setting',
+        'Customized curriculum development',
+        'Regular one-on-one mentoring sessions',
+        'Practical exercises and projects',
+        'Progress tracking and skill evaluation'
+      ],
+      imageUrl: 'https://vncmd.com/wp-content/uploads/2020/09/Mentoring.jpg'
+    },
     {
       id: 'security-assessment',
       icon: <Shield className="h-10 w-10 text-primary-400" />,
@@ -25,7 +107,6 @@ const ServicesPage: React.FC = () => {
         'Detailed reporting with actionable recommendations'
       ],
       imageUrl: 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-
     },
     {
       id: 'penetration-testing',
@@ -223,7 +304,7 @@ const ServicesPage: React.FC = () => {
       
       {/* Header */}
       <section className="min-h-screen flex items-center pt-16 bg-dark-900">
-        <div className="container">
+        <div className="container overflow-auto services-container relative">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -231,9 +312,27 @@ const ServicesPage: React.FC = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="mb-6 text-white">Cybersecurity Services</h1>
-              <p className="text-xl text-dark-300">
+              <p className="text-xl text-dark-300 mb-8">
                 Comprehensive security solutions to protect your organization's digital assets
               </p>
+              <div
+                id="services-nav-container"
+                ref={navContainerRef}
+                className="flex justify-center gap-4 overflow-x-auto px-4 py-2 relative scrollbar-hide"
+                onClick={handleClick}
+              >
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-dark-900 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-dark-900 to-transparent pointer-events-none"></div>
+                {services.map(service => (
+                  <a
+                    key={service.id}
+                    href={`#${service.id}`}
+                    className="px-4 py-2 text-sm border border-dark-700 bg-transparent hover:bg-dark-700 text-white rounded-full transition-colors whitespace-nowrap"
+                  >
+                    {service.title}
+                  </a>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -241,7 +340,7 @@ const ServicesPage: React.FC = () => {
 
       {/* Services Overview */}
       <section className="py-16 bg-dark-800">
-        <div className="container">
+        <div className="container overflow-auto services-container relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold mb-6 text-white">How I Can Help You</h2>
             <p className="text-lg text-dark-300">
@@ -350,7 +449,7 @@ const ServicesPage: React.FC = () => {
 
       {/* Industries Served */}
       <section className="py-16 bg-dark-900">
-        <div className="container">
+        <div className="container overflow-auto services-container relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold mb-6 text-white">Industries Served</h2>
             <p className="text-lg text-dark-300">
@@ -385,7 +484,7 @@ const ServicesPage: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-400 text-white">
-        <div className="container">
+        <div className="container overflow-auto services-container relative">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Strengthen Your Security?</h2>
             <p className="text-xl text-white/90 mb-8">
